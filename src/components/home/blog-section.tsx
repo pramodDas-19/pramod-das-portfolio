@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  ArrowUpRight,
   CalendarDays,
   ChevronLeft,
   ChevronRight,
@@ -70,34 +69,24 @@ export function BlogSection() {
             </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Link
-              href="#contact"
-              className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-300 transition-all active:scale-95"
+          {/* Carousel Left/Right Navigation Controls */}
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              aria-label="Scroll left"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-2xs transition-all hover:bg-blue-600 hover:text-white hover:border-blue-600 active:scale-95 cursor-pointer"
             >
-              <span>View All Articles</span>
-              <ArrowUpRight className="h-3.5 w-3.5 text-slate-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-
-            <div className="flex items-center gap-2 pl-2">
-              <button
-                type="button"
-                onClick={() => scroll("left")}
-                aria-label="Scroll left"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-xs transition-all hover:bg-blue-600 hover:text-white hover:border-blue-600 active:scale-95 cursor-pointer"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scroll("right")}
-                aria-label="Scroll right"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-xs transition-all hover:bg-blue-600 hover:text-white hover:border-blue-600 active:scale-95 cursor-pointer"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              aria-label="Scroll right"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-2xs transition-all hover:bg-blue-600 hover:text-white hover:border-blue-600 active:scale-95 cursor-pointer"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
         </motion.div>
 

@@ -124,34 +124,34 @@ export function BlogPostContent({ post, otherPosts }: BlogPostContentProps) {
         style={{ scaleX }}
       />
 
-      <article className="relative bg-linear-to-b from-white via-blue-50/30 to-white pt-24 pb-24 sm:pt-28 sm:pb-32">
+      <article className="relative w-full min-w-0 overflow-x-clip bg-linear-to-b from-white via-blue-50/30 to-white pt-24 pb-24 sm:pt-28 sm:pb-32">
         {/* Background Visual Enhancements */}
         <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-blue-400/80 to-transparent" />
         <div className="bg-dot-pattern absolute inset-0 opacity-35 pointer-events-none" aria-hidden="true" />
         
-        {/* Ambient Gradient Glows */}
-        <div
-          className="absolute -top-32 left-1/2 h-112.5 w-187.5 -translate-x-1/2 rounded-full bg-linear-to-tr from-blue-300/20 via-indigo-300/15 to-sky-300/20 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute top-1/3 right-0 h-96 w-96 rounded-full bg-indigo-200/15 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
+        {/* Ambient Gradient Glows (contained) */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div
+            className="absolute -top-32 left-1/2 h-112.5 w-187.5 max-w-full -translate-x-1/2 rounded-full bg-linear-to-tr from-blue-300/20 via-indigo-300/15 to-sky-300/20 blur-3xl"
+          />
+          <div
+            className="absolute top-1/3 right-0 h-96 w-96 rounded-full bg-indigo-200/15 blur-3xl"
+          />
+        </div>
 
-        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 min-w-0">
           {/* Top Navigation & Breadcrumbs Row */}
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-bold text-slate-500">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 text-xs font-bold text-slate-500">
               <Link href="/" className="transition-colors hover:text-blue-600">
                 Home
               </Link>
-              <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+              <ChevronRight className="h-3.5 w-3.5 text-slate-400 shrink-0" />
               <Link href="/#blog" className="transition-colors hover:text-blue-600">
                 Blog
               </Link>
-              <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
-              <span className="truncate text-slate-900 font-extrabold max-w-50 sm:max-w-xs md:max-w-md">
+              <ChevronRight className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+              <span className="truncate text-slate-900 font-extrabold max-w-30 sm:max-w-xs md:max-w-md">
                 {post.title}
               </span>
             </nav>
@@ -166,7 +166,7 @@ export function BlogPostContent({ post, otherPosts }: BlogPostContentProps) {
           </div>
 
           {/* Hero Header Section */}
-          <header className="mt-8 relative overflow-hidden rounded-3xl sm:rounded-4xl border border-slate-300 bg-white p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(15,23,42,0.12),0_2px_8px_rgba(15,23,42,0.06)]">
+          <header className="mt-8 relative overflow-hidden rounded-3xl sm:rounded-4xl border border-slate-300 bg-white p-5 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(15,23,42,0.12),0_2px_8px_rgba(15,23,42,0.06)] min-w-0">
             {/* Top Badge & Read Info Bar */}
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">

@@ -47,7 +47,7 @@ export function ProjectCaseStudyView({
   const KindIcon = kindMeta.icon;
 
   return (
-    <article className="relative bg-linear-to-b from-white via-blue-50/30 to-white pt-24 pb-24 sm:pt-28 sm:pb-32">
+    <article className="relative w-full min-w-0 overflow-x-clip bg-linear-to-b from-white via-blue-50/30 to-white pt-24 pb-24 sm:pt-28 sm:pb-32">
       {/* WhatsApp Inquiry Modal */}
       <WhatsAppInquiryModal
         isOpen={isInquiryModalOpen}
@@ -66,25 +66,26 @@ export function ProjectCaseStudyView({
       <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-blue-400/80 to-transparent" />
       <div className="bg-dot-pattern absolute inset-0 opacity-35 pointer-events-none" aria-hidden="true" />
       
-      {/* Ambient Gradient Glows */}
-      <div
-        className="absolute -top-32 left-1/2 h-112.5 w-187.5 -translate-x-1/2 rounded-full bg-linear-to-tr from-blue-300/20 via-indigo-300/15 to-sky-300/20 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
+      {/* Ambient Gradient Glows (contained) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute -top-32 left-1/2 h-112.5 w-187.5 max-w-full -translate-x-1/2 rounded-full bg-linear-to-tr from-blue-300/20 via-indigo-300/15 to-sky-300/20 blur-3xl"
+        />
+      </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 min-w-0">
         {/* Top Breadcrumbs & Back Navigation */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-bold text-slate-500">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 text-xs font-bold text-slate-500">
             <Link href="/" className="transition-colors hover:text-blue-600">
               Home
             </Link>
-            <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+            <ChevronRight className="h-3.5 w-3.5 text-slate-400 shrink-0" />
             <Link href="/#projects" className="transition-colors hover:text-blue-600">
               Projects
             </Link>
-            <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
-            <span className="truncate text-slate-900 font-black max-w-50 sm:max-w-xs md:max-w-md">
+            <ChevronRight className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+            <span className="truncate text-slate-900 font-black max-w-30 sm:max-w-xs md:max-w-md">
               {project.title}
             </span>
           </nav>
@@ -99,29 +100,29 @@ export function ProjectCaseStudyView({
         </div>
 
         {/* Hero Row: Project Header & Media Preview */}
-        <header className="mt-8 rounded-3xl sm:rounded-4xl border border-slate-300 bg-white p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(15,23,42,0.12),0_2px_8px_rgba(15,23,42,0.06)]">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-            <div>
+        <header className="mt-8 rounded-3xl sm:rounded-4xl border border-slate-300 bg-white p-5 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(15,23,42,0.12),0_2px_8px_rgba(15,23,42,0.06)] min-w-0 overflow-hidden">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center min-w-0">
+            <div className="min-w-0">
               {/* Meta Pills */}
-              <div className="flex flex-wrap items-center gap-2.5 mb-4">
+              <div className="flex flex-wrap items-center gap-2 mb-4">
                 <div
                   className={cn(
                     "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-black uppercase tracking-wider shadow-2xs",
                     kindMeta.className
                   )}
                 >
-                  <KindIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                  <KindIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   <span>{project.kindLabel}</span>
                 </div>
 
                 <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700">
-                  <Layers className="h-3 w-3 text-slate-500" />
+                  <Layers className="h-3 w-3 text-slate-500 shrink-0" />
                   <span>{project.category}</span>
                 </span>
               </div>
 
               {/* Main Title */}
-              <h1 className="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl lg:text-5xl leading-[1.15]">
+              <h1 className="text-2xl font-black tracking-tight text-slate-950 sm:text-4xl lg:text-5xl leading-[1.15] wrap-break-word">
                 {project.title}
               </h1>
 
@@ -130,24 +131,24 @@ export function ProjectCaseStudyView({
                 <span className="block font-black text-blue-800 uppercase tracking-wider text-[10px] mb-0.5">
                   My Role &amp; Contribution
                 </span>
-                <p className="text-xs sm:text-sm font-bold text-slate-800">
+                <p className="text-xs sm:text-sm font-bold text-slate-800 wrap-break-word">
                   {project.role}
                 </p>
               </div>
 
               {/* Overview Text Excerpt */}
-              <p className="mt-4 text-sm sm:text-[15px] leading-relaxed text-slate-600 font-semibold line-clamp-4">
+              <p className="mt-4 text-xs sm:text-[15px] leading-relaxed text-slate-600 font-semibold line-clamp-4">
                 {project.description}
               </p>
 
               {/* Action Links */}
-              <div className="mt-6 flex flex-wrap items-center gap-3">
+              <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3">
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-xs font-black text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 active:scale-95"
+                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-xs font-black text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 active:scale-95"
                   >
                     <Globe className="h-4 w-4" />
                     <span>Visit Live Website</span>
@@ -160,7 +161,7 @@ export function ProjectCaseStudyView({
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-xs font-bold text-slate-800 shadow-xs transition-all hover:bg-slate-50 hover:border-slate-400 active:scale-95"
+                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-xs font-bold text-slate-800 shadow-xs transition-all hover:bg-slate-50 hover:border-slate-400 active:scale-95"
                   >
                     <GitHubIcon className="h-4 w-4" />
                     <span>Source Code</span>
@@ -171,7 +172,7 @@ export function ProjectCaseStudyView({
                 <button
                   type="button"
                   onClick={() => setIsInquiryModalOpen(true)}
-                  className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 text-xs font-black text-white shadow-md shadow-emerald-600/25 transition-all hover:bg-emerald-700 active:scale-95 cursor-pointer"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-emerald-600 px-5 py-3 text-xs font-black text-white shadow-md shadow-emerald-600/25 transition-all hover:bg-emerald-700 active:scale-95 cursor-pointer"
                 >
                   <MessageCircle className="h-4 w-4" />
                   <span>Discuss Similar Project</span>
@@ -180,8 +181,8 @@ export function ProjectCaseStudyView({
             </div>
 
             {/* Media Preview Box */}
-            <div className="relative overflow-hidden rounded-3xl border-2 border-slate-300 bg-slate-950 shadow-[0_16px_50px_rgba(15,23,42,0.14)]">
-              <div className="relative aspect-video bg-slate-900">
+            <div className="relative overflow-hidden rounded-3xl border-2 border-slate-300 bg-slate-950 shadow-[0_16px_50px_rgba(15,23,42,0.14)] w-full min-w-0">
+              <div className="relative aspect-video bg-slate-900 w-full">
                 {project.video ? (
                   <video
                     className="h-full w-full object-cover"

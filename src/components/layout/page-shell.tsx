@@ -14,7 +14,7 @@ interface PageShellProps {
 
 export function PageShell({ children, className }: PageShellProps) {
   return (
-    <div className="relative flex min-h-screen flex-col bg-white selection:bg-zinc-900 selection:text-white">
+    <div className="relative flex min-h-screen w-full min-w-0 flex-col bg-white selection:bg-zinc-900 selection:text-white overflow-x-clip">
       {/* Dynamic Background Pattern */}
       <div 
         className="pointer-events-none absolute inset-0 bg-dot-pattern opacity-60" 

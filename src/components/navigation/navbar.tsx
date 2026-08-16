@@ -24,8 +24,8 @@ export function Navbar() {
         <div
           className={cn(
             "pointer-events-auto flex h-14 sm:h-16 items-center justify-between rounded-full px-4 sm:px-6 transition-all duration-300",
-            "bg-white/95 backdrop-blur-xl border border-slate-300 shadow-[0_12px_40px_rgba(15,23,42,0.12),0_2px_6px_rgba(15,23,42,0.04)]",
-            scrolled && "bg-white backdrop-blur-2xl border-slate-300 shadow-[0_16px_45px_rgba(15,23,42,0.16),0_4px_10px_rgba(15,23,42,0.06)]"
+            "bg-white border border-slate-300 shadow-[0_12px_40px_rgba(15,23,42,0.12),0_2px_6px_rgba(15,23,42,0.04)]",
+            scrolled && "shadow-[0_16px_45px_rgba(15,23,42,0.16),0_4px_10px_rgba(15,23,42,0.06)]"
           )}
         >
           {/* Logo Mark: PRAMOD DAS • */}

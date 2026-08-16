@@ -404,7 +404,7 @@ export function ProjectCaseStudyView({
               <div className="flex items-center gap-3">
                 <div className="relative h-11 w-11 overflow-hidden rounded-2xl ring-2 ring-blue-300 shadow-xs bg-slate-100 shrink-0">
                   <Image
-                    src="/avatar.png"
+                    src="/me.jpeg"
                     alt="Pramod Das"
                     width={44}
                     height={44}

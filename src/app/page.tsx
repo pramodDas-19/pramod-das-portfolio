@@ -21,7 +21,7 @@ export default function Home() {
         name: "Pramod Das",
         jobTitle: "Full Stack Web Developer",
         url: siteUrl,
-        image: `${siteUrl}/avatar.png`,
+        image: `${siteUrl}/me.jpeg`,
         email: "daspramod479@gmail.com",
         telephone: "+918767049312",
         address: {
@@ -61,7 +61,7 @@ export default function Home() {
         "@id": `${siteUrl}/#service`,
         name: "Pramod Das Web Development",
         url: siteUrl,
-        image: `${siteUrl}/avatar.png`,
+        image: `${siteUrl}/me.jpeg`,
         priceRange: "₹₹",
         telephone: "+918767049312",
         address: {

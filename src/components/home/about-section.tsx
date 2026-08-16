@@ -109,7 +109,7 @@ export function AboutSection() {
             {/* Avatar Profile Photo */}
             <div className="relative h-28 w-28 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-100 mb-4 ring-4 ring-blue-100">
               <Image
-                src="/avatar.png"
+                src="/me.jpeg"
                 alt="Pramod Das"
                 fill
                 className="object-cover"

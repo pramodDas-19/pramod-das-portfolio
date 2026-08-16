@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/config/site";
+import { AIChatWidget } from "@/components/ai-assistant/ai-chat-widget";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -91,7 +92,9 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-zinc-900 selection:text-white"
       >
         {children}
+        <AIChatWidget />
       </body>
     </html>
   );
 }
+

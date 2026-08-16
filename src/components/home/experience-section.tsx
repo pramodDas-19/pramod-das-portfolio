@@ -41,7 +41,7 @@ export function ExperienceSection() {
       className="relative overflow-hidden bg-white py-14 sm:py-16 select-none"
     >
       {/* Background Image: public/experience.png */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 pointer-events-none z-0"
         style={{ backgroundImage: "url('/experience.png')" }}
         aria-hidden="true"
@@ -75,7 +75,7 @@ export function ExperienceSection() {
         {/* Creative Compact 2-Column Split Card Layout */}
         <motion.div variants={fadeIn} className="mt-10">
           <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] xl:grid-cols-[380px_1fr] gap-6 items-stretch">
-            
+
             {/* Left Card: Role & Company Spec Card */}
             <article className="rounded-3xl border border-slate-300 bg-white p-6 sm:p-7 shadow-[0_12px_36px_rgba(15,23,42,0.09),0_2px_6px_rgba(15,23,42,0.04)] flex flex-col justify-between relative overflow-hidden">
               <div>
@@ -95,7 +95,7 @@ export function ExperienceSection() {
                 <div className="mt-5 space-y-2.5 text-xs font-semibold text-slate-700 pt-4 border-t border-slate-200">
                   <div className="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50/70">
                     <CalendarDays className="h-4 w-4 text-blue-600 shrink-0" />
-                    <span>2023 — Present</span>
+                    <span>2025 — Present</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50/70">
                     <MapPin className="h-4 w-4 text-blue-600 shrink-0" />
@@ -129,7 +129,7 @@ export function ExperienceSection() {
 
             {/* Right Card: Responsibilities & Key Contributions */}
             <article className="rounded-3xl border border-slate-300 bg-white p-6 sm:p-7 shadow-[0_12px_36px_rgba(15,23,42,0.09),0_2px_6px_rgba(15,23,42,0.04)] flex flex-col justify-between space-y-6">
-              
+
               {/* Responsibilities */}
               <div>
                 <h4 className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-500">

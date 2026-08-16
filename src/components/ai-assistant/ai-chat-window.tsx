@@ -108,9 +108,9 @@ export function AIChatWindow({ onClose }: AIChatWindowProps) {
       {/* Header */}
       <div className="relative px-4 py-3.5 bg-linear-to-r from-slate-900 via-slate-800 to-blue-950 text-white flex items-center justify-between border-b border-slate-700/60 shrink-0">
         <div className="flex items-center gap-2.5">
-          <div className="relative w-9 h-9 rounded-xl overflow-hidden shadow-md shrink-0">
+          <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-blue-500/60 shadow-md shrink-0 bg-slate-900">
             <Image
-              src="/ai-bot-avatar.png"
+              src="/me.jpeg"
               alt="Pramod's AI Twin"
               width={36}
               height={36}
@@ -173,9 +173,9 @@ export function AIChatWindow({ onClose }: AIChatWindowProps) {
         {/* Loading Indicator */}
         {isLoading && (
           <div className="flex items-start gap-2.5 my-2">
-            <div className="w-7 h-7 rounded-xl overflow-hidden border border-blue-400/40 shrink-0 shadow-2xs">
+            <div className="w-7 h-7 rounded-full overflow-hidden ring-1 ring-blue-500/50 shrink-0 shadow-2xs bg-slate-900">
               <Image
-                src="/ai-bot-avatar.png"
+                src="/me.jpeg"
                 alt="AI Thinking"
                 width={28}
                 height={28}

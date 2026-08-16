@@ -188,18 +188,18 @@ export function AIChatMessage({ message }: AIChatMessageProps) {
     >
       {/* Avatar */}
       <div
-        className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 shadow-2xs overflow-hidden ${
+        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 shadow-2xs overflow-hidden ${
           isUser
             ? "bg-blue-600 text-white"
-            : "border border-blue-400/40 bg-slate-900"
+            : "ring-1 ring-blue-500/50 bg-slate-900"
         }`}
       >
         {isUser ? (
           <User className="w-3.5 h-3.5" />
         ) : (
           <Image
-            src="/ai-bot-avatar.png"
-            alt="AI Avatar"
+            src="/me.jpeg"
+            alt="Pramod's AI Twin"
             width={28}
             height={28}
             className="w-full h-full object-cover"

@@ -152,6 +152,7 @@ export const aiKnowledge: AIKnowledgeBase = {
     liveUrl: p.liveUrl,
     githubUrl: p.githubUrl,
   })),
+  // FIXED: now lists all 6 published blog articles (was only 3)
   blogArticles: [
     {
       title: "How to Choose the Right Web Developer in Goa for Your Business",
@@ -160,20 +161,40 @@ export const aiKnowledge: AIKnowledgeBase = {
       summary: "A practical guide for business owners on evaluating portfolios, freelancer vs agency trade-offs, and critical questions to ask.",
     },
     {
-      title: "Website Development Cost in Goa: Realistic Pricing Breakdown",
+      title: "How Much Does a Business Website Cost in Goa? (Realistic Breakdown)",
       slug: "website-development-cost-in-goa",
       topic: "Pricing & ROI",
-      summary: "Detailed breakdown of website costs in Goa based on project scope, maintenance, and features.",
+      summary: "A clear, honest breakdown of what affects business website pricing in Goa — from simple sites to e-commerce.",
     },
     {
-      title: "Why Every Business in Goa Needs a High-Performance Website",
+      title: "Why Every Business in Goa Needs a Professional Website in 2026",
       slug: "why-every-business-in-goa-needs-a-website-2026",
       topic: "Local Business Growth",
-      summary: "How mobile-first design, speed, and local SEO drive direct bookings and inquiries for Goa businesses.",
+      summary: "Why hotels, villas, restaurants, and local businesses in Goa still need a proper website even with an active Instagram presence.",
+    },
+    {
+      title: "Freelance Web Developer in Goa vs Web Development Agency: Which Is Better?",
+      slug: "freelance-web-developer-vs-agency-goa",
+      topic: "Freelancer vs Agency",
+      summary: "An honest, side-by-side comparison of freelancers, small agencies, and large agencies for business website projects.",
+    },
+    {
+      title: "What Makes a Good Business Website? 10 Things Every Business Owner Should Check",
+      slug: "what-makes-a-good-business-website",
+      topic: "UX & Design Checklist",
+      summary: "A practical, non-technical checklist covering design, speed, SEO, trust signals, and more.",
+    },
+    {
+      title: "Website vs Instagram: Why Goa Businesses Should Use Both",
+      slug: "website-vs-instagram-goa-businesses",
+      topic: "Social Media vs Website",
+      summary: "Why Instagram and a website serve different purposes, and how Goa businesses can use both together effectively.",
     },
   ],
   contact: {
-    email: siteConfig.author.email,
+    // FIXED: was missing "mailto:" prefix, which caused broken links
+    // (previously resolved to http://localhost:3000/<email>)
+    email: `mailto:${siteConfig.author.email}`,
     phone: siteConfig.author.phone || "+91 8767049312",
     whatsapp: siteConfig.author.whatsapp || "https://wa.me/918767049312",
     github: siteConfig.author.github,
@@ -196,6 +217,12 @@ export const aiKnowledge: AIKnowledgeBase = {
     {
       question: "What is Pramod's typical project timeline?",
       answer: "Standard business websites take around 1 to 2 weeks, while custom full-stack web applications and SaaS platforms typically take 3 to 6 weeks depending on the feature scope.",
+    },
+    {
+      // ADDED: pricing wasn't covered as its own FAQ entry before,
+      // even though it's a very common question the bot needs to handle consistently.
+      question: "How much does a website cost?",
+      answer: "Pricing depends on scope — a standard business website, a custom full-stack application, and an e-commerce store all have very different requirements. Message Pramod on WhatsApp or Email with your project details for a tailored quote.",
     },
     {
       question: "How can I contact Pramod?",

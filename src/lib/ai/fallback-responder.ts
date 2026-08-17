@@ -14,6 +14,8 @@ export function generateFallbackResponse(userMessage: string): string {
 
   // =========================================================================
   // INTENT SCORING ENGINE
+  // (Original 19 intents are UNCHANGED below — only 2 new intents added:
+  //  "hostile" and "unclear", both at the very end of the scoring block)
   // =========================================================================
   const scores: Record<string, number> = {
     experience: 0,
@@ -35,6 +37,8 @@ export function generateFallbackResponse(userMessage: string): string {
     greetings: 0,
     thanks: 0,
     offtopic: 0,
+    // --- NEW ---
+    hostile: 0,
   };
 
   // 1. Experience & Role at Cosmic Solutions
@@ -165,6 +169,15 @@ export function generateFallbackResponse(userMessage: string): string {
     scores.offtopic += 20;
   }
 
+  // ===========================================================================
+  // NEW — 20. Hostile / Profanity / Rude Input
+  // Scored higher than weather/jokes/offtopic (20) so it always wins ties
+  // when profanity is present, regardless of what else is in the sentence.
+  // ===========================================================================
+  if (hasWord("fuck", "fucking", "fucked", "shit", "bullshit", "wtf", "damn", "asshole", "bitch", "bastard", "crap", "stupid", "dumb", "idiot", "useless", "garbage", "trash", "sucks", "sucked", "hate", "worthless")) {
+    scores.hostile += 25;
+  }
+
   // Find the intent with the highest score
   let maxScore = 0;
   let bestIntent = "fallback";
@@ -175,13 +188,25 @@ export function generateFallbackResponse(userMessage: string): string {
     }
   }
 
-  // If score is too low or zero, fallback to smart default
+  // =========================================================================
+  // NEW — Low-confidence tier
+  // If nothing scored high enough, distinguish between:
+  //  - truly empty input -> full branded intro ("fallback")
+  //  - real typed input that just didn't match anything -> "unclear"
+  // Hostile input is already caught above via its own high score, so it
+  // will never fall into this branch.
+  // =========================================================================
   if (maxScore < 3) {
-    bestIntent = "fallback";
+    bestIntent = clean.length > 0 ? "unclear" : "fallback";
   }
+
+  // Small helper so canned responses aren't 100% identical on every repeat
+  const pick = (variants: string[]) => variants[Math.floor(Math.random() * variants.length)];
 
   // =========================================================================
   // RESPONSE GENERATOR BASED ON BEST INTENT
+  // (All 19 original cases below are UNCHANGED — only 2 new cases added:
+  //  "hostile" and "unclear", placed right before "default")
   // =========================================================================
 
   switch (bestIntent) {
@@ -489,7 +514,33 @@ How can Pramod assist with your web project?`;
     }
 
     // -----------------------------------------------------------------------
-    // DEFAULT SMART FALLBACK
+    // NEW — HOSTILE / PROFANITY / RUDE INPUT
+    // Light, in-character deflection instead of the full re-intro.
+    // -----------------------------------------------------------------------
+    case "hostile": {
+      return pick([
+        `Ha, not quite sure what to do with that one 😅 — ask me about Pramod's projects, tech stack, or how to reach him!`,
+        `That one's outside my training data 😄 Try asking about his experience, pricing, or tech stack instead.`,
+        `I'll let that one slide 🙂 Want to know about his featured projects, or how to get in touch?`,
+        `Noted, and moving on 😉 — happy to talk about Pramod's work, stack, or availability instead.`,
+      ]);
+    }
+
+    // -----------------------------------------------------------------------
+    // NEW — UNCLEAR / LOW-CONFIDENCE INPUT
+    // For real typed questions that didn't match any known intent.
+    // Keeps the full branded intro reserved for true first-open/empty state.
+    // -----------------------------------------------------------------------
+    case "unclear": {
+      return pick([
+        `I'm not 100% sure I follow — could you rephrase that? I'm best with questions about Pramod's projects, tech stack, pricing, or experience.`,
+        `Hmm, I didn't quite catch the intent there. Try something like "what's his tech stack" or "how much does a project cost."`,
+        `I want to give you a proper answer — could you ask that a little differently? Topics I know well: projects, stack, pricing, experience, and contact info.`,
+      ]);
+    }
+
+    // -----------------------------------------------------------------------
+    // DEFAULT SMART FALLBACK (true last resort — e.g. empty input, first open)
     // -----------------------------------------------------------------------
     default: {
       return `### 👋 Hey there! I'm Pramod's AI Twin

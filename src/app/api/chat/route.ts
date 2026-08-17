@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       }));
 
       // Direct Gemini REST call for maximum edge compatibility & streaming support
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
 
       const res = await fetch(geminiUrl, {
         method: "POST",
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
             temperature: 0.7,
             topK: 40,
             topP: 0.95,
-            maxOutputTokens: 800,
+            maxOutputTokens: 2500,
           },
         }),
       });
